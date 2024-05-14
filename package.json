@@ -1,11 +1,11 @@
 {
   "name": "rocketseat-pizzashop-api",
-  "module": "src/index.ts",
+  "module": "src/server.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun --watch src/index.ts",
-    "build": "bun build src/index.ts",
-    "start": "NODE_ENV=production bun src/index.ts",
+    "dev": "bun --watch src/server.ts",
+    "build": "bun build src/server.ts",
+    "start": "NODE_ENV=production bun src/server.ts",
     "test": "bun test"
   },
   "devDependencies": {

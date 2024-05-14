@@ -16,6 +16,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@paralleldrive/cuid2": "2.2.2",
     "drizzle-orm": "0.30.10",
     "elysia": "1.0.20",
     "postgres": "3.4.4"

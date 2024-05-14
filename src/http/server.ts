@@ -8,6 +8,6 @@ const app = new Elysia().get('/', () => {
 
 console.log(process.env.NODE_ENV)
 
-app.listen(ENV.PORT,(server) => {
+app.listen(ENV.PORT, (server) => {
   console.log(`HTTP server running at: ${server.url}`)
-} )
+})

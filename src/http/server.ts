@@ -1,12 +1,14 @@
 import cors from '@elysiajs/cors'
 import { swagger } from '@elysiajs/swagger'
 import { Elysia, t } from 'elysia'
+import { Logestic } from 'logestic'
 
 import { db } from '../db/connection'
 import { restaurants, users } from '../db/schema'
 import { ENV } from '../env'
 
 const app = new Elysia()
+  .use(Logestic.preset('fancy'))
   .use(cors())
   .use(swagger({ path: '/docs', provider: 'swagger-ui' }))
   .post(

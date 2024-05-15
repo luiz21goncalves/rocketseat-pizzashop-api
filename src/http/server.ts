@@ -6,6 +6,7 @@ import { Logestic } from 'logestic'
 import packageJson from '../../package.json'
 import { ENV } from '../env'
 import { authenticateFromLink } from './routes/authenticate-from-link'
+import { getProfile } from './routes/get-profile'
 import { registerRestaurant } from './routes/register-restaurant'
 import { sendAuthLink } from './routes/send-auth-link'
 import { signOut } from './routes/sign-out'
@@ -31,6 +32,7 @@ const app = new Elysia()
   .use(sendAuthLink)
   .use(authenticateFromLink)
   .use(signOut)
+  .use(getProfile)
 
 app.listen(ENV.PORT, (server) => {
   console.log(`HTTP server running at: ${server.url}`)

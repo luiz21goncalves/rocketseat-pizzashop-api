@@ -1,10 +1,8 @@
 {
   "extends": ["@rocketseat/eslint-config/node", "plugin:drizzle/all"],
-  "plugins": ["drizzle", "simple-import-sort", "sort-keys"],
+  "plugins": ["drizzle", "simple-import-sort"],
   "rules": {
     "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
-    "sort-keys": "off",
-    "sort-keys/sort-keys-fix": "error"
+    "simple-import-sort/exports": "error"
   }
 }

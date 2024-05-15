@@ -29,6 +29,26 @@ const app = new Elysia()
       },
     }),
   )
+  .onError(({ code, error, set, logestic }) => {
+    switch (code) {
+      case 'VALIDATION': {
+        set.status = 'Bad Request'
+
+        return { code, error: 'Validation failed.', details: error.all }
+      }
+
+      default: {
+        set.status = 'Internal Server Error'
+
+        logestic.error(JSON.stringify(error))
+
+        return {
+          code: 'INTERNAL_SERVER_ERROR',
+          message: 'Internal Server Error',
+        }
+      }
+    }
+  })
   .use(registerRestaurant)
   .use(sendAuthLink)
   .use(authenticateFromLink)

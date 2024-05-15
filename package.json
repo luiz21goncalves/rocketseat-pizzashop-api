@@ -21,8 +21,7 @@
     "drizzle-kit": "0.21.1",
     "eslint": "8.57.0",
     "eslint-plugin-drizzle": "0.2.3",
-    "eslint-plugin-simple-import-sort": "12.1.0",
-    "eslint-plugin-sort-keys": "2.3.5"
+    "eslint-plugin-simple-import-sort": "12.1.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

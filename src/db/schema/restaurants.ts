@@ -5,15 +5,15 @@ import { pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 import { users } from './users'
 
 export const restaurants = pgTable('restaurants', {
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-  description: text('description'),
   id: text('id')
     .$defaultFn(() => createId())
     .primaryKey(),
+  name: text('name').notNull(),
+  description: text('description'),
   managerId: text('manager_id').references(() => users.id, {
     onDelete: 'set null',
   }),
-  name: text('name').notNull(),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),
 })
 

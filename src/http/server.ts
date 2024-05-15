@@ -10,7 +10,13 @@ import { ENV } from '../env'
 const app = new Elysia()
   .use(Logestic.preset('fancy'))
   .use(cors())
-  .use(swagger({ path: '/docs', provider: 'swagger-ui' }))
+  .use(
+    swagger({
+      exclude: ['/docs', '/docs/json'],
+      path: '/docs',
+      provider: 'swagger-ui',
+    }),
+  )
   .post(
     '/restaurants',
     async ({ body, set }) => {

@@ -27,5 +27,8 @@ export const registerRestaurant = new Elysia().post(
       phone: t.Optional(t.String({ minLength: 1 })),
       restaurantName: t.String({ minLength: 1 }),
     }),
+    detail: {
+      tags: ['Restaurants'],
+    },
   },
 )

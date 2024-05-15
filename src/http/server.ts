@@ -3,6 +3,7 @@ import { swagger } from '@elysiajs/swagger'
 import { Elysia } from 'elysia'
 import { Logestic } from 'logestic'
 
+import packageJson from '../../package.json'
 import { ENV } from '../env'
 import { registerRestaurant } from './routes/register-restaurant'
 import { sendAuthLink } from './routes/send-auth-link'
@@ -15,6 +16,13 @@ const app = new Elysia()
       exclude: ['/docs', '/docs/json'],
       path: '/docs',
       provider: 'scalar',
+      documentation: {
+        info: {
+          title: packageJson.name,
+          version: packageJson.version,
+          description: packageJson.description,
+        },
+      },
     }),
   )
   .use(registerRestaurant)

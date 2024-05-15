@@ -1,6 +1,10 @@
 {
   "name": "rocketseat-pizzashop-api",
   "module": "src/http/server.ts",
+  "version": "0.0.0",
+  "author": "Luiz Gonçalves<luizhbgoncalves@gmail.com>",
+  "description": "Food delivery app (aka. iFood/Uber Eats) back-end built with TypeScript, Drizzle a ElysiaJS.",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "bun --watch src/http/server.ts",

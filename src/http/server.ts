@@ -1,6 +1,8 @@
+import cookie from '@elysiajs/cookie'
 import cors from '@elysiajs/cors'
+import jwt from '@elysiajs/jwt'
 import { swagger } from '@elysiajs/swagger'
-import { Elysia } from 'elysia'
+import { Elysia, t } from 'elysia'
 import { Logestic } from 'logestic'
 
 import packageJson from '../../package.json'
@@ -10,6 +12,16 @@ import { sendAuthLink } from './routes/send-auth-link'
 
 const app = new Elysia()
   .use(Logestic.preset('fancy'))
+  .use(
+    jwt({
+      secret: ENV.JWT_SECRET_KEY,
+      schema: t.Object({
+        sub: t.String(),
+        restaurantId: t.Optional(t.String()),
+      }),
+    }),
+  )
+  .use(cookie())
   .use(cors())
   .use(
     swagger({

@@ -36,6 +36,8 @@
     "@elysiajs/jwt": "1.0.2",
     "@elysiajs/swagger": "1.0.5",
     "@paralleldrive/cuid2": "2.2.2",
+    "@react-email/components": "0.0.17",
+    "@react-email/render": "0.0.13",
     "dayjs": "1.11.11",
     "drizzle-orm": "0.30.10",
     "elysia": "1.0.20",

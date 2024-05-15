@@ -6,6 +6,7 @@ const envSchema = z.object({
   AUTH_REDIRECT_URL: z.string().url(),
   PORT: z.coerce.number(),
   JWT_SECRET_KEY: z.string(),
+  MAILER_SMTP_URL: z.string().url(),
 })
 
 export const ENV = envSchema.parse(process.env)

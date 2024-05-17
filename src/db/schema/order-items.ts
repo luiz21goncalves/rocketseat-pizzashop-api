@@ -1,4 +1,5 @@
 import { createId } from '@paralleldrive/cuid2'
+import { relations } from 'drizzle-orm'
 import { integer, pgTable, text } from 'drizzle-orm/pg-core'
 
 import { orders } from './order'
@@ -18,4 +19,17 @@ export const orderItems = pgTable('order_items', {
   }),
   priceInCents: integer('price_in_cents').notNull(),
   quantity: integer('quantity').notNull(),
+})
+
+export const orderItemsRelations = relations(orderItems, ({ one }) => {
+  return {
+    order: one(orders, {
+      references: [orders.id],
+      fields: [orderItems.orderId],
+    }),
+    product: one(products, {
+      references: [products.id],
+      fields: [orderItems.productId],
+    }),
+  }
 })

@@ -7,6 +7,7 @@ import packageJson from '../../package.json'
 import { ENV } from '../env'
 import { authenticateFromLink } from './routes/authenticate-from-link'
 import { getManagedRestaurant } from './routes/get-managed-restaurant'
+import { getOrderDetails } from './routes/get-order-details'
 import { getProfile } from './routes/get-profile'
 import { registerRestaurant } from './routes/register-restaurant'
 import { sendAuthLink } from './routes/send-auth-link'
@@ -55,6 +56,7 @@ const app = new Elysia()
   .use(signOut)
   .use(getProfile)
   .use(getManagedRestaurant)
+  .use(getOrderDetails)
 
 app.listen(ENV.PORT, (server) => {
   console.log(`HTTP server running at: ${server.url}`)

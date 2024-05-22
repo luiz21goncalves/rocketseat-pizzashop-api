@@ -5,6 +5,7 @@ import { Logestic } from 'logestic'
 
 import packageJson from '../../package.json'
 import { ENV } from '../env'
+import { approveOrder } from './routes/approve-order'
 import { authenticateFromLink } from './routes/authenticate-from-link'
 import { getManagedRestaurant } from './routes/get-managed-restaurant'
 import { getOrderDetails } from './routes/get-order-details'
@@ -30,12 +31,18 @@ const app = new Elysia()
       },
     }),
   )
-  .onError(({ code, error, set, logestic }) => {
+  .onError(({ code, error, set, logestic, path, request }) => {
     switch (code) {
       case 'VALIDATION': {
         set.status = 'Bad Request'
 
         return { code, error: 'Validation failed.', details: error.all }
+      }
+
+      case 'NOT_FOUND': {
+        set.status = 'Not Found'
+
+        return { code, message: `${request.method}:${path} not found` }
       }
 
       default: {
@@ -57,6 +64,7 @@ const app = new Elysia()
   .use(getProfile)
   .use(getManagedRestaurant)
   .use(getOrderDetails)
+  .use(approveOrder)
 
 app.listen(ENV.PORT, (server) => {
   console.log(`HTTP server running at: ${server.url}`)

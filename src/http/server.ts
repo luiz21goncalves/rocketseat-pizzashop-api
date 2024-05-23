@@ -11,6 +11,7 @@ import { cancelOrder } from './routes/cancel-order'
 import { deliverOrder } from './routes/deliver-order'
 import { dispatchOrder } from './routes/dispatch-order'
 import { getManagedRestaurant } from './routes/get-managed-restaurant'
+import { getMonthRevenue } from './routes/get-month-revenue'
 import { getOrderDetails } from './routes/get-order-details'
 import { getOrders } from './routes/get-orders'
 import { getProfile } from './routes/get-profile'
@@ -73,6 +74,7 @@ const app = new Elysia()
   .use(cancelOrder)
   .use(deliverOrder)
   .use(dispatchOrder)
+  .use(getMonthRevenue)
 
 app.listen(ENV.PORT, (server) => {
   console.log(`HTTP server running at: ${server.url}`)

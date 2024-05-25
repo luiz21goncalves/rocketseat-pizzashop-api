@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { and, eq, gte, sql, sum } from 'drizzle-orm'
+import { and, eq, gte, not, sql, sum } from 'drizzle-orm'
 import Elysia from 'elysia'
 
 import { db } from '../../db/connection'
@@ -30,6 +30,7 @@ export const getMonthRevenue = new Elysia().use(auth).get(
         and(
           eq(orders.restaurantId, restaurantId),
           gte(orders.createdAt, startOfLastMonth.toDate()),
+          not(eq(orders.status, 'canceled')),
         ),
       )
       .groupBy(sql`TO_CHAR(${orders.createdAt}, 'YYYY-MM')`)

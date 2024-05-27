@@ -23,6 +23,7 @@ import { getProfile } from './routes/get-profile'
 import { registerRestaurant } from './routes/register-restaurant'
 import { sendAuthLink } from './routes/send-auth-link'
 import { signOut } from './routes/sign-out'
+import { updateProfile } from './routes/update-profile'
 
 const app = new Elysia()
   .use(Logestic.preset('fancy'))
@@ -100,6 +101,7 @@ const app = new Elysia()
   .use(getMonthCanceledOrdersAmount)
   .use(getPopularProducts)
   .use(getDailyRevenueInPeriod)
+  .use(updateProfile)
 
 app.listen(ENV.PORT, (server) => {
   console.log(`HTTP server running at: ${server.url}`)

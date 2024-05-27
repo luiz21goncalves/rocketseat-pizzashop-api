@@ -26,7 +26,22 @@ import { signOut } from './routes/sign-out'
 
 const app = new Elysia()
   .use(Logestic.preset('fancy'))
-  .use(cors())
+  .use(
+    cors({
+      credentials: true,
+      allowedHeaders: ['content-type'],
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
+      origin: (request): boolean => {
+        const origin = request.headers.get('origin')
+
+        if (!origin) {
+          return false
+        }
+
+        return true
+      },
+    }),
+  )
   .use(
     swagger({
       exclude: ['/docs', '/docs/json'],

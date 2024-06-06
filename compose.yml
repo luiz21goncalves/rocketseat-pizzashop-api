@@ -9,11 +9,22 @@ services:
       POSTGRESQL_DATABASE: pizzashop
     volumes:
       - pizzashop_db_data:/bitnami/postgresql
+    deploy:
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: "512MB"
+
   mailhog:
     image: mailhog/mailhog:v1.0.1
     ports:
       - 1025:1025
       - 8025:8025
+    deploy:
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: "512MB"
 
 volumes:
   pizzashop_db_data:
